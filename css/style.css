@@ -43,7 +43,6 @@
         @import "../css/indent.min.css";
         @import "../css/plugins.css";
         @import "../css/animate.min.css";
-        @import "../plugins/arcticmodal/jquery.arcticmodal.css";
         @import "../plugins/jquery-ui/jquery-ui.structure.min.css";
         @import "../plugins/jquery-ui/jquery-ui.theme.min.css";
 
@@ -861,11 +860,26 @@
 
 .end .bg{
     background: url(../images/bg11.jpg) 0 0 no-repeat;
+    -webkit-transition: background-image ease-out 0.3s;
 }
 
 .end .bg::before{
     opacity: 1;
     visibility: visible;
+    width: 600px;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.end .bg::after{
+    opacity: .6;
+    visibility: visible;
+    -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;
 }
 
 .content, .bg{
@@ -899,12 +913,34 @@
             background: url(../images/bg1_2.jpg) 0 0 no-repeat;
             z-index: -1;
             position: relative;
+            -webkit-transition: background-image ease-out 0.3s;
+        }
+
+        .bg::after{
+            content: "";
+            height: 200px;
+            width: 200px;
+            background: red;
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            visibility: hidden;
+            opacity: 0;
+            z-index: 2;
+            -webkit-transition: all 0.7s ease;
+            -moz-transition: all 0.7s ease;
+            -o-transition: all 0.7s ease;
+            transition: all 0.7s ease;
         }
 
         .bg::before{
             content: "";
             height: 60px;
-            width: 600px;
+            width: 0px;
             background: green;
             position: absolute;
             left: 0;
@@ -912,6 +948,10 @@
             visibility: hidden;
             opacity: 0;
             z-index: 2;
+            -webkit-transition: all 0.4s ease;
+            -moz-transition: all 0.4s ease;
+            -o-transition: all 0.4s ease;
+            transition: all 0.4s ease;
         }
 
         .content {

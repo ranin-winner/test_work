@@ -58,12 +58,8 @@
 				        	if (($(this).offset().top + 90) >= boxOffset.top){
 				        		if ($(this).offset().left >= boxOffset.left && ($(this).offset().left + $(this).width()) <= (boxOffset.left + boxW)) {
 
-				        			$(this).animate({
-				        				left: "150px",
-										top: "100%" 
-				        			});
-
 				        			$(this).draggable( "option", "revert", false);
+
 				        		}
 				        	}
 				        },
@@ -71,6 +67,13 @@
 
 		        			if (($(this).offset().top + 90) >= boxOffset.top){
 				        		if ($(this).offset().left >= boxOffset.left && ($(this).offset().left + $(this).width()) <= (boxOffset.left + boxW)) {
+
+				        			$(this).animate({
+				        				left: "150px",
+										top: "100%",
+										visible: "hidden",
+										opacity: "0"
+				        			});
 
 				        			$('body').find('.drag').addClass('fall');
 
@@ -108,7 +111,7 @@
 					        		currentOffset 	= current.offset();
 
 					        	$('.map').find('.yellow').each(function(){
-					        		if ($(this).offset().top <= (currentOffset.top + 40) && ($(this).offset().top) >= (currentOffset.top)){
+					        		if ($(this).offset().top <= (currentOffset.top + 80) && ($(this).offset().top) >= (currentOffset.top)){
 					        			$(this).addClass('active');
 					        		}
 					        		else{
