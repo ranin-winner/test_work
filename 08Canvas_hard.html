@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+        <!--==============================>>  Head Start  <<=================================-->
+
+
+                <head>
+
+                        <title>slider</title>
+
+                        <meta name = "format-detection" content = "telephone=no" />
+
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+                        <meta charset="utf-8">
+
+                        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+                        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+                        <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+                        <link rel="stylesheet" type="text/css" media="screen" href="css/responsive.css">
+
+                        <script src="js/jquery-2.1.3.min.js"></script>
+                        
+                        <script src="js/jquery-migrate-1.2.1.min.js"></script>
+
+                </head>
+
+
+        <!--==============================>>  Head End    <<=================================-->
+
+
+
+
+        <!--==============================>>  Body Start  <<=================================-->
+
+                <body>
+
+                        <!--==============================>>  Content Start  <<=================================-->
+
+
+                                <article id="content" class="content_container">
+
+                                        <div class="Stage_base_2">
+                                            <div class="canvas_area" onclick="startAm()">
+                                                <canvas id="canvas_int" width="544" height="544"></canvas>
+                                            </div>
+                                            <div class="arrow_box">
+                                                <div class="arr_hour"></div>
+                                                <div class="arr_minute"></div>
+                                            </div>
+                                        </div>
+                                    
+                                </article>
+
+
+                        <!--==============================>>  Content End    <<=================================-->
+
+                        <!-- Scripts Include Libs & Plugins START
+                        ============================================ -->
+                            
+                            <script>
+                                
+                                // requestAnimationFrame Shim
+                                // (function() {
+                                //   var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                                //                               window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+                                //   window.requestAnimationFrame = requestAnimationFrame;
+                                // })();
+
+                                // function startAm() {
+                                //  var canvas = document.getElementById('canvas_int');
+                                //  var context = canvas.getContext('2d');
+                                //  var x = canvas.width / 2;
+                                //  var y = canvas.height / 2;
+                                //  var radius = 217;
+                                //  var radius2 = 237;
+                                //  var endPercent = 135;
+                                //  var endPercent2 = 100;
+                                //  var curPerc = 0;
+                                //  var curPerc2 = 0;
+                                //  var counterClockwise = false;
+                                //  var circ = Math.PI * 2;
+                                //  var circ2 = Math.PI * 2;
+                                //  var quart = Math.PI / 2;
+                                //  var quart2 = Math.PI / 2;
+                                
+                                // context.beginPath();
+                                //  context.lineWidth = 10;
+                                //  context.strokeStyle = '#656565';
+                                //  context.stroke();
+                                // context.clearRect(0, 0, canvas.width, canvas.height);                                    
+
+
+                                //  function animate(current) {
+                                //     context.beginPath(); 
+                                //      context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
+                                //      context.stroke();
+                                //      curPerc++;
+
+                                //      if (curPerc < endPercent) {
+                                //          requestAnimationFrame(function () {
+                                //              animate(curPerc / 150)
+                                //          });
+                                //      } 
+                                //  }
+                                    
+                                //     context.beginPath();
+                                //     context.lineWidth = 15;
+                                //      context.strokeStyle = '#000';
+                                //      context.stroke();
+
+                                //  function animate2(current) {
+
+                                //      context.beginPath();
+                                //      context.arc(x, y, radius2, -(quart2), ((circ2) * current) - quart2, false);
+                                //      context.stroke();
+                                //      curPerc2++;
+                                     
+                                //      if (curPerc2 < endPercent2){
+                                        
+                                //         requestAnimationFrame(function () {
+                                //             animate2(curPerc / 540);
+                                //          });   
+                                //      }
+                                //  }
+
+                                // animate();
+                                // setTimeout(function() {
+                                //     animate2();
+                                // }, 5100);      
+
+                                // };
+
+                                function startAm() {
+
+                                    var currentEndAngle = 0;
+                                    var currentStartAngle = 0;
+                                    var currentColor = 'black';
+                                    var lineRadius = 75;
+                                    var lineWidth = 15;
+
+                                    setInterval(draw, 50);
+
+
+                                    function draw() { /***************/
+
+                                        var can = document.getElementById('canvas_int'); // GET LE CANVAS
+                                        var canvas = document.getElementById("canvas_int");
+                                        var context = canvas.getContext("2d");
+                                        var x = canvas.width / 2;
+                                        var y = canvas.height / 2;
+                                        var radius;
+                                        var width;
+
+                                        var startAngle = currentStartAngle * Math.PI;
+                                        var endAngle = (currentEndAngle) * Math.PI;
+                                        
+                                        currentStartAngle = currentEndAngle - 0.025;
+                                        currentEndAngle = currentEndAngle + 0.025;
+                                        
+                                        if (Math.floor(currentStartAngle / 2) % 2) {
+                                          currentColor = "red";
+                                          radius = lineRadius * 3.1;
+                                          width = lineWidth + 3;
+                                        } else {
+                                          currentColor = "black";
+                                          radius = lineRadius *2.85;
+                                          width = lineWidth - 5;
+                                        }
+                                                
+                                        var counterClockwise = false;
+
+                                        context.beginPath();
+                                        context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+                                        context.lineWidth = width;
+                                        // line color
+                                        context.strokeStyle = currentColor;
+                                        context.stroke();
+
+                                        /************************************************/
+                                    }
+                                };    
+
+                            </script>
+
+
+
+                                <script src="js/script.js"></script>
+                                <script src="js/initialize_plugins.js"></script>
+
+
+                        <!-- Scripts Include Libs & Plugins END
+                        ============================================ -->
+
+                        
+                </body>
+
+        <!--==============================>>  Body End    <<=================================-->
+
+
+</html>
